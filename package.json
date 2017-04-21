@@ -1,0 +1,31 @@
+{
+  "name": "@lassehaslev/sass-asset-inliner",
+  "version": "0.0.1",
+  "description": "Helper functions for node-sass for inlining assets",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lassehaslev/sass-asset-inliner.git"
+  },
+  "keywords": [
+    "node-sass",
+    "inline",
+    "image",
+    "base64",
+    "encode"
+  ],
+  "author": "Lasse S. Haslev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lassehaslev/sass-asset-inliner/issues"
+  },
+  "homepage": "https://github.com/lassehaslev/sass-asset-inliner#readme",
+  "dependencies": {
+    "@lassehaslev/font-subsetter": "^0.1.0",
+    "extend": "^3.0.0",
+    "node-sass": "^4.5.2"
+  }
+}
