@@ -3,6 +3,9 @@ var path = require( 'path' );
 var extend = require( 'extend' );
 var nodeSass = require('node-sass');
 
+// var request = require( 'request' );
+var request = require( 'sync-request' );
+
 var types = nodeSass.types;
 var FontSubseter = require( '@lassehaslev/font-subsetter' );
 
@@ -16,15 +19,33 @@ var mime = require( 'mime-types' );
     // return nodeSass.types.String(buffer.toString('base64'));
 // };
 var encodeBase64 = function( filePath ) {
-    // Get relative path
-    // var relativePath = './' + filePath.getValue();
-    var filePath = path.resolve( settings.base, filePath );
+
+    var data = null;
+
+    /*
+     * Get data from url if it is a url
+     */
+    if ( /^http/.test( filePath ) ) {
+
+        var res = request('GET', filePath);
+        data = res.getBody();
+
+    }
+    /*
+     * Get data from file path if it is not a url
+     */
+    else {
+
+        // Get relative path
+        // var relativePath = './' + filePath.getValue();
+        var filePath = path.resolve( settings.base, filePath );
+
+        // Read the file
+        data = fs.readFileSync( filePath );
+    }
 
     // Get the mime type
     var mimeType = mime.lookup(filePath);
-
-    // Read the file
-    var data = fs.readFileSync( filePath );
     var buffer = new Buffer( data );
 
     return '"data:' + mimeType + ';base64,' + buffer.toString('base64') + '"';
