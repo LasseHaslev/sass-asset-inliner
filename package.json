@@ -26,6 +26,7 @@
   "dependencies": {
     "@lassehaslev/font-subsetter": "^0.1.0",
     "extend": "^3.0.0",
-    "node-sass": "^4.5.2"
+    "node-sass": "^4.5.2",
+    "sync-request": "^4.1.0"
   }
 }
