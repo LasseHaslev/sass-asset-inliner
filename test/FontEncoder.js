@@ -1,5 +1,5 @@
 import test from 'ava';
-import Encoder from '../dist/index';
+import { Encoder } from '../dist/index';
 
 let url = 'https://fonts.gstatic.com/s/teko/v6/MZYifgR5I0jauz62eF96WhTbgVql8nDJpwnrE27mub0.woff2'
 
