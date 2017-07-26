@@ -28,11 +28,15 @@ test( 'it can check if file exists', t => {
     t.true( requestFile.exists() );
 } );
 
-// test( 'it can guess the mime type', t => {
-    // let file = new File( 'mocks/image.png' );
+test( 'it can guess the mime type', t => {
+    t.is( relativeFile.mimeType(), 'image/jpeg' );
+    t.is( absoluteFile.mimeType(), 'image/jpeg' );
+    t.is( requestFile.mimeType(), null );
 
-    // t.is( file.mimeType(), 'image/png' )
-// } );
+    let file = new File( 'http://via.placeholder.com/350x150.jpg' );
+    t.is( file.mimeType(), 'image/jpeg' );
+
+} );
 // It can set base folder
 // it can retrieve the file buffer
 // it can guess how to get the file

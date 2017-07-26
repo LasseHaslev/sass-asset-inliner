@@ -3,6 +3,8 @@ import fs from 'fs';
 import path from 'path';
 import request from 'sync-request';
 
+import mime from 'mime-types';
+
 export default class {
 
     constructor( filePath ) {
@@ -31,6 +33,14 @@ export default class {
             return res.statusCode.toString()[0] == 2;
         }
         return fs.existsSync( this.path() );
+    }
+
+    mimeType() {
+        let mimeType = mime.lookup( this.path() )
+        if (!mimeType) {
+            return null;
+        }
+        return mimeType;
     }
 
 }
