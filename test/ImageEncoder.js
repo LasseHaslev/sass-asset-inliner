@@ -9,7 +9,7 @@ let url = 'https://www.google.no/images/branding/googlelogo/2x/googlelogo_color_
 // } );
 
 // It resizes image before base64 encoding it
-test.only( 'it resizes image before base64 encoding it if parameter is set', async t => {
+test( 'it resizes image before base64 encoding it if parameter is set', async t => {
     let original = await Encoder.encodeImage( url );
     let subsetted = await Encoder.encodeImage( url, '10x10' );
 

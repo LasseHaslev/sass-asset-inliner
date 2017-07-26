@@ -7,7 +7,7 @@ export default class {
     static encode( path ) {
         let file = new File( path );
 
-        return '"data:' + file.mimeType() + ';base64,' + file.buffer().toString('base64') + '"';
+        return 'data:' + file.mimeType() + ';base64,' + file.buffer().toString('base64');
     }
 
     static encodeFont( path, regex ) {
@@ -47,8 +47,6 @@ export default class {
             width = split[0] != '_' ? split[0] : Jimp.AUTO;
             height = split[1] != '_' ? split[1] : Jimp.AUTO;
         }
-
-        console.log([width, height]);
 
 
         return await Jimp.read( file.buffer() ).then( async image => {
