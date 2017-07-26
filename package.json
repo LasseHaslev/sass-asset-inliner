@@ -6,7 +6,8 @@
   "scripts": {
     "test": "ava",
     "tdd": "executor 'npm run build && npm run test' --watch='**/*.js' --ignore='node_modules/' --ignore='dist/'",
-    "build": "babel src -d dist"
+    "build": "babel src -d dist",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
