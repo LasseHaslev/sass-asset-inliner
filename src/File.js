@@ -16,19 +16,19 @@ export default class {
     }
 
     path() {
-        if (this.filePath[0] === '/' || this.isExternalRequest()) {
+        if (this.filePath[0] === '/' || this.isExternalResource()) {
             return this.filePath;
         }
 
         return process.cwd() + '/' + this.filePath;
     }
 
-    isExternalRequest() {
+    isExternalResource() {
         return /^http/.test( this.filePath );
     }
 
     exists() {
-        if (this.isExternalRequest()) {
+        if (this.isExternalResource()) {
             var res = request( 'HEAD', this.path() );
             return res.statusCode.toString()[0] == 2;
         }
@@ -41,6 +41,29 @@ export default class {
             return null;
         }
         return mimeType;
+    }
+
+    /*
+     * Read content of file
+     */
+    read() {
+
+        if (!this.exists()) {
+            throw new TypeError( this.path() + ' does not contain a readable file' );
+        }
+
+        if (this.isExternalResource()) {
+            var res = request('GET', this.path());
+            return res.getBody();
+        }
+        return fs.readFileSync( this.path() );
+    }
+
+    /*
+     * Return file buffer
+     */
+    buffer() {
+        return new Buffer( this.read() );
     }
 
 }

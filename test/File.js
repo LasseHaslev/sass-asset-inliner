@@ -6,8 +6,6 @@ let relativeFile = null;
 let absoluteFile;
 let requestFile = null;
 
-// Can set options
-// Can get full path
 test.before( t => {
     relativeFile = new File( 'test/mocks/image.jpg' );
     absoluteFile = new File( '/test.jpg' );
@@ -37,7 +35,24 @@ test( 'it can guess the mime type', t => {
     t.is( file.mimeType(), null );
 
 } );
+
+test( 'it can read file', t => {
+    t.truthy( relativeFile.read() );
+    t.truthy( requestFile.read() );
+} );
+
+test( 'it can retrieve the file buffer', t => {
+    t.truthy( relativeFile.buffer() );
+    t.truthy( requestFile.buffer() );
+} );
+
+test( 'it throws error if file dont exists', t => {
+    let error = t.throws( t => {
+        absoluteFile.buffer();
+    } );
+    t.is( error.message, absoluteFile.path() + ' does not contain a readable file' );
+} );
+
+// Can set options
 // It can set base folder
-// it can retrieve the file buffer
-// it can guess how to get the file
-    // relative, absolute or http
+
