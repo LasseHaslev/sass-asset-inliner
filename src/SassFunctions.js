@@ -1,7 +1,16 @@
-export default {
-        'inline-image($string)': function( filePath, regex ) {
+import Encoder from './Encoder';
+import sass from 'node-sass';
 
-            return types.String( 'url(' + encodeBase64( filePath.getValue() ) + ')' );
+export default {
+        'inline-image($string)': function( filePath, done ) {
+
+            console.log('inline-image called');
+
+            Encoder.encodeImage( filePath.getValue() ).then( function( base64 ) {
+                done( sass.types.String( 'url("' + base64 + '")' ) );
+            } );
+
+            // return sass.types.String( 'url("' + base64 + '")' )
 
         },
         "inline-font($string, $regex: null)": function( filePath, regex ) {
