@@ -4,6 +4,23 @@ import {Encoder} from '../dist/index';
 
 import SassFunctions from '../dist/index';
 
+let compileSass = async ( content ) => {
+    return await new Promise( function( resolve, reject ) {
+        sass.render( {
+            // file: 'test/mocks/style.scss',
+            data: content,
+            functions: SassFunctions,
+            outputStyle: 'compact'
+        }, function( error, result ) {
+            if (error) {
+                console.log(error);
+            }
+            resolve(result.css.toString());
+        } )
+    });
+
+}
+
 
 test( 'it implements inline-image', t => {
     t.truthy( SassFunctions['inline-image($string)'] );
@@ -15,19 +32,7 @@ test( 'it implements font-subsetter', t => {
 
 test( 'it can inline images', async t => {
 
-    let css = await new Promise( function( resolve, reject ) {
-        sass.render( {
-            // file: 'test/mocks/style.scss',
-            data: '.image { background-image: inline-image( "test/mocks/image.jpg" ); }',
-            functions: SassFunctions,
-            outputStyle: 'compact'
-        }, function( error, result ) {
-            if (error) {
-                console.log(error);
-            }
-            resolve(result.css.toString());
-        } )
-    });
+    let css = await compileSass( '.image { background-image: inline-image( "test/mocks/image.jpg" ); }' );
 
     let base64 = await Encoder.encodeImage( 'test/mocks/image.jpg' );
 
