@@ -36,14 +36,19 @@ export default class {
 
         let file = new File( path );
 
-        let width = null;
-        let height = null;
+        let width = Jimp.AUTO;
+        let height = Jimp.AUTO;
 
-        if (/\d+x\d+/.test( size )) {
-            var split = size.split( 'x' );
-            width = split[0];
-            height = split[1];
+        if (/^\d+$/.test( size )) {
+            width = size;
         }
+        else if (/^[\d_]+x[\d_]+$/.test( size )) {
+            var split = size.split( 'x' );
+            width = split[0] != '_' ? split[0] : Jimp.AUTO;
+            height = split[1] != '_' ? split[1] : Jimp.AUTO;
+        }
+
+        console.log([width, height]);
 
 
         return await Jimp.read( file.buffer() ).then( async image => {
