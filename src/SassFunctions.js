@@ -4,13 +4,9 @@ import sass from 'node-sass';
 export default {
         'inline-image($string)': function( filePath, done ) {
 
-            console.log('inline-image called');
-
             Encoder.encodeImage( filePath.getValue() ).then( function( base64 ) {
                 done( sass.types.String( 'url("' + base64 + '")' ) );
             } );
-
-            // return sass.types.String( 'url("' + base64 + '")' )
 
         },
         "inline-font($string, $regex: null)": function( filePath, regex ) {

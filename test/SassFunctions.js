@@ -22,8 +22,9 @@ test( 'it can inline images', async t => {
             functions: SassFunctions,
             outputStyle: 'compact'
         }, function( error, result ) {
-            // console.log(error);
-            // console.log(result);
+            if (error) {
+                console.log(error);
+            }
             resolve(result.css.toString());
         } )
     });
