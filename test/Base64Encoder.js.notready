@@ -1,6 +1,0 @@
-import test from 'ava';
-
-// it takes a absolute or relative path or url to base64 encode file
-
-// test( 'It can base64 encode from buffer', t => {
-// } );

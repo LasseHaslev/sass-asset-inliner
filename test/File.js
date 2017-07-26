@@ -55,4 +55,3 @@ test( 'it throws error if file dont exists', t => {
 
 // Can set options
 // It can set base folder
-
