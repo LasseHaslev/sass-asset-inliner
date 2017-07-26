@@ -34,5 +34,8 @@ sass.render({
 }
 body {
     background-image: inline-image( 'path/to/your/image.png' );
+
+    // To resize your image you can write
+    background-image: inline-image( 'path/to/your/image.png', "200x400" );
 }
 ```
