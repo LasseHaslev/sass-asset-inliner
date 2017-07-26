@@ -11,4 +11,8 @@ export default class {
         return this.encode( path );
     }
 
+    static encodeImage( path ) {
+        return this.encode( path );
+    }
+
 }
