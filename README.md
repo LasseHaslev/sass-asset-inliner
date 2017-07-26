@@ -37,5 +37,8 @@ body {
 
     // To resize your image you can write
     background-image: inline-image( 'path/to/your/image.png', "200x400" );
+
+    // Add a underscore to the value you dont care about
+    background-image: inline-image( 'path/to/your/image.png', "_x400" );
 }
 ```
