@@ -2,9 +2,12 @@ import Encoder from './Encoder';
 import sass from 'node-sass';
 
 export default {
-        'inline-image($string)': function( filePath, done ) {
+        'inline-image($string, $size: null)': function( filePath, size, done ) {
 
-            Encoder.encodeImage( filePath.getValue() ).then( function( base64 ) {
+            filePath = filePath.getValue();
+            size = size.constructor.name === 'SassNull' ? null : size.getValue();
+
+            Encoder.encodeImage( filePath, size ).then( function( base64 ) {
                 done( sass.types.String( 'url("' + base64 + '")' ) );
             } );
 

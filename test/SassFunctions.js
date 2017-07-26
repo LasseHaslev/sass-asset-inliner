@@ -22,14 +22,6 @@ let compileSass = async ( content ) => {
 }
 
 
-test( 'it implements inline-image', t => {
-    t.truthy( SassFunctions['inline-image($string)'] );
-} );
-
-test( 'it implements font-subsetter', t => {
-    t.truthy( SassFunctions['inline-font($string, $regex: null)'] );
-} );
-
 test( 'it can inline images', async t => {
 
     let css = await compileSass( '.image { background-image: inline-image( "test/mocks/image.jpg" ); }' );
@@ -38,4 +30,12 @@ test( 'it can inline images', async t => {
 
     t.is( css, '.image { background-image: url("' + base64 + '"); }\n' );
 
+} );
+
+test( 'it can resize images before inlining them', async t => {
+    let css = await compileSass( '.image { background-image: inline-image( "test/mocks/image.jpg", 10 ); }' );
+
+    let base64 = await Encoder.encodeImage( 'test/mocks/image.jpg', "10" );
+
+    t.is( css, '.image { background-image: url("' + base64 + '"); }\n' );
 } );
