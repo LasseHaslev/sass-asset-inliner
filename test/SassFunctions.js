@@ -17,7 +17,8 @@ test( 'it can inline images', async t => {
 
     let css = await new Promise( function( resolve, reject ) {
         sass.render( {
-            file: 'test/mocks/style.scss',
+            // file: 'test/mocks/style.scss',
+            data: '.image { background-image: inline-image( "test/mocks/image.jpg" ); }',
             functions: SassFunctions,
             outputStyle: 'compact'
         }, function( error, result ) {
