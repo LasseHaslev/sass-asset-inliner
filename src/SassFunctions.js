@@ -13,21 +13,12 @@ export default {
 
         },
         "inline-font($string, $regex: null)": function( filePath, regex ) {
+            filePath = filePath.getValue();
+            regex = regex.constructor.name === 'SassNull' ? null : regex.getValue();
 
-            if (regex.constructor.name === 'SassNull') {
-                return types.String( 'url(' + encodeBase64( filePath.getValue() ) + ')' );
-            }
 
-            regex = regex.getValue();
-
-            // Get relative path
-            // var relativePath = './' + filePath.getValue();
-            var relativePath = filePath.getValue();
-            var filePath = path.resolve( settings.base, relativePath );
-
-            var subseter = new FontSubseter( filePath, {
-                regex: new RegExp( regex ),
-            } );
-            return types.String( 'url( ' + subseter.subset().toBase64() + ' )' );
+            let base64 = Encoder.encodeFont( filePath, regex );
+            var returnString = 'url("' + base64 + '")';
+            return sass.types.String( returnString )
         },
 }
