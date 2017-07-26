@@ -27,7 +27,9 @@
   "homepage": "https://github.com/lassehaslev/sass-asset-inliner#readme",
   "dependencies": {
     "@lassehaslev/font-subsetter": "^0.1.0",
+    "babel-polyfill": "^6.23.0",
     "extend": "^3.0.0",
+    "jimp": "^0.2.28",
     "node-sass": "^4.5.2",
     "sync-request": "^4.1.0"
   },

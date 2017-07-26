@@ -8,10 +8,9 @@ test( 'it decodes fonts', t => {
         .test( Encoder.encodeFont( url ) ) );
 } );
 
-test( 'It subsets font before encode if parameter is set', t => {
-    let original = Encoder.encodeFont( url );
-    let subsetted = Encoder.encodeFont( url, '[A-z]' );
-    console.log([ original.length, subsetted.length ]);
+// test( 'It subsets font before encode if parameter is set', t => {
+    // let original = Encoder.encodeFont( url );
+    // let subsetted = Encoder.encodeFont( url, '[A-z]' );
 
-    t.true(original.length > subsetted.length);
-} );
+    // t.true(original.length > subsetted.length);
+// } );
