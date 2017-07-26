@@ -54,3 +54,30 @@ body {
     src: inline-font( 'path/to/your/font.ttf', '[0-9]' );
 }
 ```
+
+### Api
+
+As the [SassFunctions](https://github.com/LasseHaslev/sass-asset-inliner/blob/development/src/SassFunctions.js) you can use the functions of the [Encoder](https://github.com/LasseHaslev/sass-asset-inliner/blob/development/src/Encoder.js).
+
+```js
+import {Encoder} from '@lassehaslev/sass-asset-inliner';
+
+// base64 encode file
+Encoder.encode( '{path}' );
+
+// base64 encode image
+Encoder.encodeImage( '{path}', '100x100' );
+
+// base64 encode font
+Encoder.encodeFont( '{path}', '[0-9]' );
+```
+
+### Development
+
+```bash
+// Test driven development
+npm run tdd
+
+// Build
+npm run build
+```
