@@ -9,3 +9,9 @@ test( 'it decodes images', t => {
 } );
 
 // It resizes image before base64 encoding it
+// test( 'it resizes image before base64 encoding it if parameter is set', t => {
+    // let original = Encoder.encodeImage( url );
+    // let subsetted = Encoder.encodeImage( url );
+
+    // t.true(original.length > subsetted.length);
+// } );

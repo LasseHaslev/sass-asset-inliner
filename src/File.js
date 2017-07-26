@@ -66,4 +66,21 @@ export default class {
         return new Buffer( this.read() );
     }
 
+    /*
+     * Save file
+     */
+    save( path ) {
+        path = path[0] === '/' ? path : process.cwd() + '/' + path 
+        let hasError = false;
+
+        // console.log(path);
+
+        fs.writeFileSync( path, this.read(), function( error ) {
+            if (error) {
+                hasError = true;
+            }
+        } );
+
+        return hasError;
+    }
 }

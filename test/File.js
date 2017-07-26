@@ -1,3 +1,4 @@
+import fs from 'fs';
 import test from 'ava';
 
 import { File } from '../dist/index';
@@ -51,6 +52,15 @@ test( 'it throws error if file dont exists', t => {
         absoluteFile.buffer();
     } );
     t.is( error.message, absoluteFile.path() + ' does not contain a readable file' );
+} );
+
+test( 'it can save file', t => {
+    let filePath = '/tmp/image.png';
+    requestFile.save( filePath );
+
+    t.true( fs.existsSync( filePath ) );
+
+    fs.unlinkSync( filePath );
 } );
 
 // Can set options
