@@ -1,6 +1,6 @@
 {
   "name": "@lassehaslev/sass-asset-inliner",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Helper functions for node-sass for inlining assets",
   "main": "dist/index.js",
   "scripts": {
