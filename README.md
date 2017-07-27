@@ -33,13 +33,20 @@ Inline assets by including `absolute path`, `relative path` or `url` to the asse
 #### Inline images
 ```scss
 body {
+    // Inline image
     background-image: inline-image( 'path/to/your/image.png' );
 
-    // To resize your image you can write
+    // Inline and resize image to width (Kepp aspect ratio)
+    background-image: inline-image( 'path/to/your/image.png', "200" );
+
+    // Resize image and ignoring aspect ratio
     background-image: inline-image( 'path/to/your/image.png', "200x400" );
 
-    // Add a underscore to the value you dont care about
+    // Resize image to height and keep aspect ratio
     background-image: inline-image( 'path/to/your/image.png', "_x400" );
+
+    // Underscore works also for height.
+    // ("200x_" equals "200" as shown above)
 }
 ```
 
