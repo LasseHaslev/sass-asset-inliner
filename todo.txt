@@ -1,2 +1,2 @@
-[ ] Add check to see that we can see the mime type of string when trying to encode it. Error if we dont
 [ ] Add support for inlining of svg
+[ ] Throw error if request HEAD cannot find out of the url in File.exists() function

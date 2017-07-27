@@ -44,13 +44,6 @@ test( 'it can retrieve the file buffer', t => {
     t.truthy( requestFile.buffer() );
 } );
 
-test( 'it throws error if file dont exists', t => {
-    let error = t.throws( t => {
-        absoluteFile.buffer();
-    } );
-    t.is( error.message, absoluteFile.path() + ' does not contain a readable file' );
-} );
-
 test( 'it can save file', t => {
     let filePath = '/tmp/image.png';
     requestFile.save( filePath );
@@ -66,6 +59,15 @@ test( 'it throws error if it can not figure out the mime type', t => {
     } );
 
     t.is( error.message, 'Could not find mime-type of https://example.com/image.png?hello=200' );
+} );
+
+test( 'it throws error if the file does not exists', t => {
+    let error = t.throws( t => {
+        absoluteFile.buffer();
+    } );
+
+    console.log(error.message);
+    t.is( error.message, '/test.jpg does not exists or contain a readable file.' );
 } );
 
 // Can set options

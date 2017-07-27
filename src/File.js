@@ -10,13 +10,10 @@ export default class {
     constructor( filePath ) {
         this.filePath = filePath;
 
+        // Check if everything is fine before moving on
         if (!this.mimeType()) {
             throw new TypeError( 'Could not find mime-type of ' + this.path() );
         }
-    }
-
-    mimeType() {
-
     }
 
     path() {
@@ -53,7 +50,7 @@ export default class {
     read() {
 
         if (!this.exists()) {
-            throw new TypeError( this.path() + ' does not contain a readable file' );
+            throw new TypeError( this.path() + ' does not exists or contain a readable file.' );
         }
 
         if (this.isExternalResource()) {
