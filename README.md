@@ -26,7 +26,7 @@ sass.render({
 }, function(err, result) { /*...*/ });
 ```
 
-### Sass file
+### Sass
 
 Inline assets by including `absolute path`, `relative path` or `url` to the assets you want to inline.
 
