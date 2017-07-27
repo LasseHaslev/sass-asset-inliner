@@ -32,9 +32,6 @@ test( 'it can guess the mime type', t => {
     t.is( absoluteFile.mimeType(), 'image/jpeg' );
     t.is( requestFile.mimeType(), 'image/png' );
 
-    let file = new File( 'http://via.placeholder.com/350x150' );
-    t.is( file.mimeType(), null );
-
 } );
 
 test( 'it can read file', t => {
@@ -61,6 +58,14 @@ test( 'it can save file', t => {
     t.true( fs.existsSync( filePath ) );
 
     fs.unlinkSync( filePath );
+} );
+
+test( 'it throws error if it can not figure out the mime type', t => {
+    let error = t.throws( t => {
+        let file = new File( 'https://example.com/image.png?hello=200' );
+    } );
+
+    t.is( error.message, 'Could not find mime-type of https://example.com/image.png?hello=200' );
 } );
 
 // Can set options

@@ -9,6 +9,10 @@ export default class {
 
     constructor( filePath ) {
         this.filePath = filePath;
+
+        if (!this.mimeType()) {
+            throw new TypeError( 'Could not find mime-type of ' + this.path() );
+        }
     }
 
     mimeType() {
