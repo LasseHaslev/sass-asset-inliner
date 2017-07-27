@@ -14,7 +14,9 @@ You need to add the `sass-asset-inliner` functions to `node-sass` `function opti
 
 ```js
 var sass = require('node-sass');
-var SassAssetInliner = require( '@lassehaslev/sass-asset-inliner' );
+
+// When not using es6 you must use the default property
+var SassAssetInliner = require( '@lassehaslev/sass-asset-inliner' ).default;
 
 sass.render({
     file: scss_filename,
