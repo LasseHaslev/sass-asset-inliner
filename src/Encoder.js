@@ -31,7 +31,9 @@ export default class {
     static async encodeImage( path, size ) {
 
         if (!size) {
-            return this.encode( path );
+            return await Promise.resolve(
+                this.encode( path )
+            );
         }
 
         let file = new File( path );
