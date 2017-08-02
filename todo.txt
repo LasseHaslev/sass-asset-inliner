@@ -1,2 +1,5 @@
 [ ] Add support for inlining of svg
 [ ] Throw error if request HEAD cannot find out of the url in File.exists() function
+[ ] Find out why some url works and some dont in inline-image
+    https://adaptretail.com/assets/company/demo/priceco_logo.svg // Does not work
+    http://ecode.no/adapt/showcases/groceries/logo.svg // Does work
