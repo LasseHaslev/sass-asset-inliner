@@ -70,5 +70,15 @@ test( 'it throws error if the file does not exists', t => {
     t.is( error.message, '/test.jpg does not exists or contain a readable file.' );
 } );
 
+test( 'it handles all urls and not cause strange error as it previously did', t => {
+
+    let workingFile = new File( 'http://ecode.no/adapt/showcases/groceries/logo.svg' );
+    t.truthy( workingFile.buffer() );
+
+    let notWorkingFile = new File( 'https://adaptretail.com/assets/company/demo/priceco_logo.svg' );
+    t.truthy( notWorkingFile.buffer() );
+
+} );
+
 // Can set options
 // It can set base folder
